@@ -21,3 +21,17 @@ flask db init
 flask db migrate -m "initialize database"
 flask db upgrade
 ```
+
+## Exercises
+
+Add these validations:
+
+1. The `year_joined` must be between 1970 and the current year.
+
+2. Username cannot include naughty words like 'heck', 'frack', or 'bish'.
+
+3. Add a validation so that `phone_number` includes 10 characters (exclude internation numbers for now).
+    Bonus: The `phone_number` should also reformat to remove dashes and throw an error if alphabetical characters are included...
+
+4. Address must include the words 'Street', 'Avenue', or 'Road'.
+    Bonus: Add a validation so addresses must include a 5 digit zipcode at the end (you can use a slice to get the last characters)...
