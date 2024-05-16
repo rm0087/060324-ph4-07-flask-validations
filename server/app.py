@@ -4,6 +4,7 @@ from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
+import sqlalchemy
 
 from models import db, User
 
@@ -43,17 +44,23 @@ def user_by_id(id):
 
 @app.post('/users')
 def post_user():
-    user = User(
-        username=request.json.get('username'),
-        email=request.json.get('email'),
-        address=request.json.get('address'),
-        phone_number=request.json.get('phone_number'),
-        age=request.json.get('age'),
-        vip=request.json.get('vip')
-    )
-    db.session.add(user)
-    db.session.commit()
-    return user.to_dict(), 201
+    try:
+        user = User(
+            username=request.json.get('username'),
+            email=request.json.get('email'),
+            address=request.json.get('address'),
+            phone_number=request.json.get('phone_number'),
+            age=request.json.get('age'),
+            vip=request.json.get('vip'),
+            year_joined=request.json.get('year_joined')
+        )
+        db.session.add(user)
+        db.session.commit()
+        return user.to_dict(), 201
+    except sqlalchemy.exc.IntegrityError as error:
+        return { 'error': 'Invalid data' }, 400
+    except ValueError as error:
+        return { 'error': str(error) }, 400
 
 
 @app.patch('/users/<int:id>')
