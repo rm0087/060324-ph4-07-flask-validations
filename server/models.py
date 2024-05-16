@@ -20,15 +20,9 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
 
     username = db.Column(db.String)
-
     email = db.Column(db.String)
-
     address = db.Column(db.String)
-
     phone_number = db.Column(db.String)
-
     age = db.Column(db.Integer)
-
     vip = db.Column(db.Boolean)
-
     year_joined = db.Column(db.Integer)

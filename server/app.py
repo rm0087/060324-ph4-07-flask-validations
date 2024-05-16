@@ -80,5 +80,7 @@ def delete_user_by_id(id):
         return {'error': 'Not found'}, 404
 
 
+# RUN ##########################
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
