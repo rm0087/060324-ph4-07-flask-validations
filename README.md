@@ -31,7 +31,8 @@ Add these validations:
 2. Username cannot include naughty words like 'heck', 'frack', or 'bish'.
 
 3. Add a validation so that `phone_number` includes 10 characters (exclude internation numbers for now).
-    Bonus: The `phone_number` should also reformat to remove dashes and throw an error if alphabetical characters are included...
+    Bonus: The `phone_number` should also reformat to remove dashes before validating
+    Bonus: The `phone_number` should throw an error if any alphabetical characters are included (use regex)
 
 4. Address must include the words 'Street', 'Avenue', or 'Road'.
     Bonus: Add a validation so addresses must include a 5 digit zipcode at the end (you can use a slice to get the last characters)...
