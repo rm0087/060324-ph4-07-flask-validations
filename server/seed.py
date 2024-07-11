@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from app import app
-from models import db, Politician, Scandal, Involvement
+from config import app, db
+from models import Politician, Scandal, Involvement
 from faker import Faker
 
 faker = Faker()
