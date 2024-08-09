@@ -52,11 +52,14 @@ def post_user():
 def patch_user_by_id(id):
     user = User.query.where(User.id == id).first()
     if user:
-        for key in request.json.keys():
-            setattr(user, key, request.json[key])
-        db.session.add(user)
-        db.session.commit()
-        return user.to_dict(), 202
+        try:
+            for key in request.json:
+                setattr(user, key, request.json[key])
+            db.session.add(user)
+            db.session.commit()
+            return user.to_dict(), 202
+        except:
+            return { 'error': 'Invalid data' }, 400
     else:
         return {'error': 'Not found'}, 404
     
